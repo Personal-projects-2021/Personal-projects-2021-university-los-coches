@@ -28,16 +28,16 @@ class CreateUsersTable extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('horario_id')->nullable();
+            // $table->unsignedBigInteger('horario_id')->nullable(); 
             $table->unsignedBigInteger('state_id')->nullable();
 
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onDelete('set null');
 
-            $table->foreign('horario_id')
-                ->references('id')->on('horarios')
-                ->onDelete('set null');
+            // $table->foreign('horario_id')
+            //     ->references('id')->on('horarios')
+            //     ->onDelete('set null');
 
             $table->foreign('state_id')
                 ->references('id')->on('states')

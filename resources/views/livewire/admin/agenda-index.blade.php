@@ -1,18 +1,12 @@
-@extends('adminlte::page')
+<div class="card row justify-content-md-center">
 
-@section('title', 'Dashboard')
+    <div class="card-header row flex-auto">
+        <div class="col-md-6">
+            <input wire:model="search" class="form-control" placeholder="Ingrese el nombre de un empleado">
+        </div>
+    </div>
 
-@section('content_header')
-    <a class="btn btn-secondary btn-sm float-right" href="{{ route('admin.agendas.create') }}">Crear Agenda</a>
-    <h1>Lista de Agendas</h1>
-@stop
-
-@section('content')
-
-    @include('sweetalert::alert')
-
-    @livewire('admin.agenda-index')
-    {{-- <div class="card row justify-content-md-center">
+    {{-- <div class="card row justify-content-md-center"> --}}
 
         @if ($agendas->count())
             <div class="card-body">
@@ -25,6 +19,7 @@
                             <th>Fecha Inicio</th>
                             <th>Fecha Fin</th>
                             <th>Horario</th>
+                            <th>Estado</th>
                             <th colspan="2"></th>
                         </tr>
                     </thead>
@@ -41,6 +36,15 @@
                                 @elseif($agenda->horario->start_hour == '19:00:00')
                                     <td>07 PM - 07 AM</td>
                                 @endif
+                                <td>
+                                    @if ($agenda->end_date < date('Y-m-d', strtotime(now())))
+                                        <span class="bg-secondary p-2 rounded-pill">Finalizada</span>
+                                    @elseif ($agenda->start_date <= date('Y-m-d', strtotime(now())) && $agenda->end_date >= date('Y-m-d', strtotime(now())))
+                                        <span class="bg-success p-2 rounded-pill">En Proceso</span>
+                                    @else    
+                                        <span class="bg-info p-2 rounded-pill">Pendiente</span>
+                                    @endif
+                                </td>
                                 <td width="10px">
                                     @can('admin.agendas.edit')
                                         <a class="btn btn-primary btn-sm"
@@ -52,7 +56,7 @@
                                         <form action="{{ route('admin.agendas.destroy', $agenda) }}" method="POST">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn btn-danger">Eleminar</button>
+                                            <button type="submit" class="btn btn-danger btn-sm">Eleminar</button>
                                         </form>
                                     @endcan
 
@@ -62,22 +66,14 @@
                     </tbody>
                 </table>
             </div>
+            <div class="card-footer">
+                {{ $agendas->links() }}
+            </div>
         @else
             <div class="card-body">
                 No hay agendas registradas
             </div>
         @endif 
 
-    </div> --}}
-
-@stop
-
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-@section('js')
-    <script>
-        console.log('Hi!');
-    </script>
-@stop
+    {{-- </div> --}}
+</div> 

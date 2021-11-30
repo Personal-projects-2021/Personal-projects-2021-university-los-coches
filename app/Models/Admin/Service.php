@@ -9,10 +9,14 @@ class Service extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price'];
+    protected $fillable = ['name', 'price', 'duration', 'type_id'];
 
     public function getRouteKeyName()
     {
         return 'name';
+    }
+
+    public function type(){
+        return $this->belongsTo(Type::class);
     }
 }

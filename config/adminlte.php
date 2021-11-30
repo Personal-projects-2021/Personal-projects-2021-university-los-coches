@@ -290,7 +290,7 @@ return [
                 [
                     'text'       => 'Lista de Agendas',
                     'icon' => 'fas fa-fw fa-clipboard-list',
-                    'active' => ['admin/agendas*'],
+                    'active' => ['admin/agendas/index'],
                     'route'        => 'admin.agendas.index',
                 ],
                 [

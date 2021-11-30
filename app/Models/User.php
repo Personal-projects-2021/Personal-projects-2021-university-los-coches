@@ -39,7 +39,7 @@ class User extends Authenticatable
         'password',
         'state_id', 
         'user_id',
-        'horario_id'
+        // 'horario_id'
     ];
 
     public function getRouteKeyName()
@@ -78,17 +78,21 @@ class User extends Authenticatable
     ];
 
     // Relación uno a muchos (inversa)
-    public function horario(){
-        return $this->belongsTo(Horario::class, 'horario_id');
-    }
+    // public function horario(){
+    //     return $this->belongsTo(Horario::class, 'horario_id');
+    // }
 
     // Relación uno a muchos (inversa)
     public function state(){
         return $this->belongsTo(State::class, 'state_id');
     }
 
-    public function agendas(){
+    public function agendas(){ 
         return $this->hasMany(Agenda::class, 'admin_id');
+    }
+
+    public function agendasEmployee(){
+        return $this->hasMany(Agenda::class, 'employee_id');
     }
     
 

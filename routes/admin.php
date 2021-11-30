@@ -22,12 +22,12 @@ Route::resource('yardManagers', YardmanagerController::class)->names('admin.yard
 
 Route::resource('users', UserController::class)->names('admin.users')->middleware('active'); 
 
-Route::resource('marks', MarkController::class)->names('admin.marks');
+Route::resource('marks', MarkController::class)->names('admin.marks')->middleware('active');
 
-Route::resource('types', TypeController::class)->names('admin.types');
+Route::resource('types', TypeController::class)->names('admin.types')->middleware('active');
 
-Route::resource('services', ServiceController::class)->names('admin.services');
+Route::resource('services', ServiceController::class)->names('admin.services')->middleware('active');
 
-Route::resource('modelcars', ModelcarController::class)->names('admin.modelcars');
+Route::resource('modelcars', ModelcarController::class)->names('admin.modelcars')->middleware('active');
 
-Route::resource('agendas', AgendaController::class)->names('admin.agendas');
+Route::resource('agendas', AgendaController::class)->names('admin.agendas')->middleware('active');

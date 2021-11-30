@@ -14,10 +14,18 @@ class Agenda extends Model
         'name',
         'start_date',
         'end_date',
-        'start_hour',
-        'end_hour',
+        'horario_id',
+        'employee_id',
         'admin_id'
     ];
+
+    public function horario(){
+        return $this->belongsTo(Horario::class);
+    }
+
+    public function employee(){
+        return $this->belongsTo(User::class);
+    }
 
     public function admin(){
         return $this->belongsTo(User::class);

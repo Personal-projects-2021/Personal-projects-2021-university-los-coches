@@ -89,7 +89,6 @@ class UserSeeder extends Seeder
             'email' => 'luisa@g.com',
             'email_verified_at' => now(),
             'password' => bcrypt('12345678'),
-            'horario_id' => 1
         ])->assignRole(['employee']);
 
         User::create([
@@ -103,7 +102,32 @@ class UserSeeder extends Seeder
             'email' => '   alberto@g.com',
             'email_verified_at' => now(),
             'password' => bcrypt('12345678'),
-            'horario_id' => 1
+        ])->assignRole(['employee']);
+
+        User::create([
+            'user_name' => 'antonio1',
+            'name' => 'Antonio',
+            'last_name' => 'Castañeda',
+            'birthdate' => '2000-06-10',
+            'identification' => '1036645613',
+            'phone' => '3018619159',
+            'state_id' => 1,
+            'email' => '   antonio@g.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('12345678'),
+        ])->assignRole(['employee']);
+
+        User::create([
+            'user_name' => 'alfonso01',
+            'name' => 'Alfonso',
+            'last_name' => 'Ramirez',
+            'birthdate' => '1998-11-03',
+            'identification' => '1035749963',
+            'phone' => '3016565459',
+            'state_id' => 1,
+            'email' => '   alfonso@g.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('12345678'),
         ])->assignRole(['employee']);
 
         User::factory(29)->create();
